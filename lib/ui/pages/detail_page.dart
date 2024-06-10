@@ -1,0 +1,1 @@
+// ini buat semua tampilan detail event

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+//ya ini file desain input form jadi smua form ntar bentukan desainnya kek bgni lah kira2
+
 class CustomInputForm extends StatelessWidget {
   final TextEditingController? controller;
   final bool? readOnly;

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+//ini buat colors blom gw ganti masi copasan 
 class AppColors {
   static const Color primaryColor = Color(0xFFF47340);
   static const Color primaryLightColor = Color(0xFFFEECE9);

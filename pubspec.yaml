@@ -20,6 +20,9 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+  - assets/images/logo.png
+
   fonts:
     - family: PlusJakartaSans
       fonts:
@@ -28,3 +31,6 @@ flutter:
           weight: 700
         - asset: assets/fonts/PlusJakartaSans-Italic.ttf
           style: italic
+
+  
+    

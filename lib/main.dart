@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mavent/app/resources/named_routes.dart';
 import 'package:mavent/ui/pages/login_page.dart';
-
+ 
+ //ini main lah ya
 
 void main() => runApp(MyApp());
 

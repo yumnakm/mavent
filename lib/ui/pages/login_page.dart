@@ -3,6 +3,8 @@ import 'package:mavent/app/resources/named_routes.dart';
 import 'package:mavent/ui/pages/signup_page.dart';
 import 'package:mavent/ui/widgets/custom_input_form.dart';
 
+//ya ini login page lah ya buat desain form2nya ada di bagian folder widget custom input
+
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
@@ -48,12 +50,19 @@ class _LoginPageState extends State<LoginPage> {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Container(
-                                  height: 140,
+                                  height: 100,
+                                  child: Image.asset(
+                                    'assets/images/logo.png',
+                                     fit: BoxFit.contain,
+                                  ),
+                                ),
+                                Container(
+                                  height: 100,
                                   child: Text(
                                     'Mavent',
                                     style: TextStyle(
                                       fontFamily: 'Plus Jakarta Sans',
-                                      color: Color(0xFF101213),
+                                      color: Color.fromARGB(255, 35, 116, 191),
                                       fontSize: 36,
                                       letterSpacing: 0,
                                       fontWeight: FontWeight.w600,
@@ -64,7 +73,7 @@ class _LoginPageState extends State<LoginPage> {
                                   'Login',
                                   style: TextStyle(
                                     fontFamily: 'Plus Jakarta Sans',
-                                    color: Color(0xFF101213),
+                                    color: Color(0xFF57636C),
                                     fontSize: 36,
                                     letterSpacing: 0,
                                     fontWeight: FontWeight.w600,
