@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mavent/app/resources/named_routes.dart';
+import 'package:mavent/ui/pages/home_page.dart';
 import 'package:mavent/ui/pages/login_page.dart';
  
  //ini main lah ya
@@ -15,13 +15,10 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         fontFamily: 'PlusJakartaSans',
       ),
-      onGenerateRoute: (RouteSettings settings)  {
-        switch (settings.name) {
-          case NamedRoutes.loginScreen:
-          return MaterialPageRoute(builder: (context) => const LoginPage());
-        default:
-          return MaterialPageRoute(builder: (context) => const LoginPage());
-        }
+      home: LoginPage(),
+      routes: {
+        '/login': (context) => LoginPage(),
+        '/event_homepage': (context) => HomePage(),
       },
     );
   }

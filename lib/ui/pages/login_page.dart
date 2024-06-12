@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mavent/app/resources/named_routes.dart';
+import 'package:mavent/ui/pages/home_page.dart';
 import 'package:mavent/ui/pages/signup_page.dart';
 import 'package:mavent/ui/widgets/custom_input_form.dart';
 
@@ -105,10 +105,13 @@ class _LoginPageState extends State<LoginPage> {
                                   hint: "Enter your Password"
                                 ),
                                 ElevatedButton(
-                                  onPressed: () => Navigator.pushNamed(
-                                    context,
-                                    NamedRoutes.homeScreen,
-                                  ),
+                      onPressed: () {
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => HomePage()));
+                      },
+                  
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: Color(0xFF4B39EF),
                                     minimumSize: Size(370, 44),
