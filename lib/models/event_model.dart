@@ -23,7 +23,7 @@ class EventModel {
       description: json['info'] ?? '',
       date: json['dates']['start']['localDate'],
       image: json['images'][0]['url'],
-      location: json['_embedded']['venues'][0]['name'],
+      location: json['_embedded']['venues']?[0]['name'] ?? 'Unknown Location',
     );
   }
 

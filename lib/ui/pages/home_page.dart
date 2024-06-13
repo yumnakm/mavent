@@ -65,12 +65,12 @@ class _HomePageState extends State<HomePage> {
 
           final events = snapshot.data!;
           return ListView.builder(
-            padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+            padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 8.0),
             itemCount: events.length,
             itemBuilder: (context, index) {
               final event = events[index];
               return Padding(
-                padding: const EdgeInsets.only(bottom: 16.0),
+                padding: const EdgeInsets.only(bottom: 10.0),
                 child: CardEvent(event: event),
               );
             },

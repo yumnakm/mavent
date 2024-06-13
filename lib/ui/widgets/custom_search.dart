@@ -11,11 +11,13 @@ class CustomSearch extends StatelessWidget {
       padding: EdgeInsetsDirectional.fromSTEB(16, 4, 16, 12),
       child: TextFormField(
         controller: searchController,
-        autofocus: false,
+        autofocus:
+            true, // Fokus langsung ke input saat halaman pertama kali dibuka
         textCapitalization: TextCapitalization.sentences,
         obscureText: false,
         decoration: InputDecoration(
           labelText: 'Search',
+          prefixIcon: Icon(Icons.search),
           labelStyle: TextStyle(
             fontFamily: 'Plus Jakarta Sans',
             color: Color(0xFF606A85),
@@ -69,13 +71,15 @@ class CustomSearch extends StatelessWidget {
         ),
         style: TextStyle(
           fontFamily: 'Plus Jakarta Sans',
-          color: Color(
-0xFF15161E),
+          color: Color(0xFF15161E),
           fontSize: 14,
           letterSpacing: 0,
           fontWeight: FontWeight.w600,
         ),
         cursorColor: Color(0xFF6F61EF),
+        onChanged: (value) {
+          // Diimplementasikan pada HomePage
+        },
       ),
     );
   }
