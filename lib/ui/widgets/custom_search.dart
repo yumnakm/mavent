@@ -11,8 +11,6 @@ class CustomSearch extends StatelessWidget {
       padding: EdgeInsetsDirectional.fromSTEB(16, 4, 16, 12),
       child: TextFormField(
         controller: searchController,
-        autofocus:
-            true, // Fokus langsung ke input saat halaman pertama kali dibuka
         textCapitalization: TextCapitalization.sentences,
         obscureText: false,
         decoration: InputDecoration(
@@ -20,14 +18,14 @@ class CustomSearch extends StatelessWidget {
           prefixIcon: Icon(Icons.search),
           labelStyle: TextStyle(
             fontFamily: 'Plus Jakarta Sans',
-            color: Color(0xFF606A85),
+            color: Colors.grey,
             fontSize: 14,
             letterSpacing: 0,
             fontWeight: FontWeight.w500,
           ),
           hintStyle: TextStyle(
             fontFamily: 'Plus Jakarta Sans',
-            color: Color(0xFF606A85),
+            color: Colors.grey,
             fontSize: 14,
             letterSpacing: 0,
             fontWeight: FontWeight.w500,
@@ -44,39 +42,39 @@ class CustomSearch extends StatelessWidget {
               color: Color(0xFFE5E7EB),
               width: 1,
             ),
-            borderRadius: BorderRadius.circular(8),
+            borderRadius: BorderRadius.circular(30),
           ),
           focusedBorder: OutlineInputBorder(
             borderSide: BorderSide(
-              color: Color(0xFF6F61EF),
+              color: Colors.transparent,
               width: 1,
             ),
-            borderRadius: BorderRadius.circular(8),
+            borderRadius: BorderRadius.circular(30),
           ),
           errorBorder: OutlineInputBorder(
             borderSide: BorderSide(
               color: Color(0xFFFF5963),
               width: 1,
             ),
-            borderRadius: BorderRadius.circular(8),
+            borderRadius: BorderRadius.circular(30),
           ),
           focusedErrorBorder: OutlineInputBorder(
             borderSide: BorderSide(
               color: Color(0xFFFF5963),
               width: 1,
             ),
-            borderRadius: BorderRadius.circular(8),
+            borderRadius: BorderRadius.circular(30),
           ),
           filled: true,
         ),
         style: TextStyle(
           fontFamily: 'Plus Jakarta Sans',
-          color: Color(0xFF15161E),
+          color: Colors.black,
           fontSize: 14,
           letterSpacing: 0,
-          fontWeight: FontWeight.w600,
+          fontWeight: FontWeight.w500,
         ),
-        cursorColor: Color(0xFF6F61EF),
+        cursorColor: Colors.grey,
         onChanged: (value) {
           // Diimplementasikan pada HomePage
         },
