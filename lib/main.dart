@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mavent/ui/pages/home_page.dart';
 import 'package:mavent/ui/pages/login_page.dart';
+import 'package:mavent/ui/pages/signup_page.dart';
  
  //ini main lah ya
 
@@ -15,9 +16,10 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         fontFamily: 'PlusJakartaSans',
       ),
-      home: LoginPage(),
+      home: LoginPage(), 
       routes: {
         '/login': (context) => LoginPage(),
+        '/signup': (context) => SignUpPage(),
         '/event_homepage': (context) => HomePage(),
       },
     );

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mavent/ui/pages/home_page.dart';
 import 'package:mavent/ui/pages/ticket_page.dart';
-import 'package:mavent/ui/pages/profile_page.dart';
 
 class CustomNavbar extends StatelessWidget {
   final int currentIndex;
@@ -16,9 +15,6 @@ class CustomNavbar extends StatelessWidget {
         break;
       case 1:
         page = TicketPage();
-        break;
-      case 2:
-        page = ProfilePage();
         break;
       default:
         page = HomePage();
@@ -51,7 +47,7 @@ class CustomNavbar extends StatelessWidget {
             ),
           ],
           currentIndex: currentIndex,
-          selectedItemColor: Colors.blue,
+          selectedItemColor: Color(0xFF4B39EF),
           onTap: (index) => _onItemTapped(context, index),
         ),
       ),

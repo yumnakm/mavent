@@ -5,8 +5,7 @@ import 'package:mavent/app/resources/datautil.dart';
 class DetailEventPage extends StatefulWidget {
   final EventModel event;
 
-  const DetailEventPage({Key? key, required this.event})
-      : super(key: key);
+  const DetailEventPage({Key? key, required this.event}) : super(key: key);
 
   @override
   _DetailEventPageState createState() => _DetailEventPageState();
@@ -14,6 +13,8 @@ class DetailEventPage extends StatefulWidget {
 
 class _DetailEventPageState extends State<DetailEventPage> {
   late EventModel _event;
+  int _ticketCount = 0; // State untuk menyimpan jumlah tiket yang akan dibeli
+  int _ticketPrice = 100000; // Harga per tiket, contoh: Rp100.000
 
   @override
   void initState() {
@@ -25,9 +26,9 @@ class _DetailEventPageState extends State<DetailEventPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar( // Sesuaikan dengan tema yang Anda inginkan
-      forceMaterialTransparency: true,
-      title: Text(_event.title,),
+      appBar: AppBar(
+         forceMaterialTransparency: true,
+        title: Text(_event.title),
         leading: IconButton(
           icon: Icon(Icons.arrow_back_rounded),
           onPressed: () {
@@ -52,7 +53,7 @@ class _DetailEventPageState extends State<DetailEventPage> {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(8),
                 child: Image.network(
-                  _event.image,
+                  _event.image, // Gunakan imageUrl dari EventModel
                   width: double.infinity,
                   height: 280,
                   fit: BoxFit.cover,
@@ -82,7 +83,7 @@ class _DetailEventPageState extends State<DetailEventPage> {
                   ),
                   SizedBox(height: 8),
                   Text(
-                    'By ',
+                    'By ', // Tambahkan promoterName dari EventModel
                     style: TextStyle(
                       fontFamily: 'Plus Jakarta Sans',
                       letterSpacing: 0,
@@ -114,28 +115,73 @@ class _DetailEventPageState extends State<DetailEventPage> {
                     ),
                   ),
                   SizedBox(height: 8),
-                  _buildTimelineEvent('Opening Event', DateUtil.formatDate(_event.date)),
+                  _buildTimelineEvent(
+                      'Opening Event', DateUtil.formatDate(_event.date)),
                   SizedBox(height: 8),
                   _buildTimelineEvent('Location', _event.location),
-                  SizedBox(height: 16),
                   SizedBox(height: 8),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  Column(
                     children: [
-                      Text(
-                        'Your Total',
-                        style: TextStyle(
-                          fontFamily: 'Plus Jakarta Sans',
-                          letterSpacing: 0,
-                        ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Total Tickets',
+                            style: TextStyle(
+                              fontFamily: 'Plus Jakarta Sans',
+                              letterSpacing: 0,
+                            ),
+                          ),
+                          Row(
+                            children: [
+                              IconButton(
+                                icon: Icon(Icons.remove),
+                                onPressed: () {
+                                  if (_ticketCount > 0) {
+                                    setState(() {
+                                      _ticketCount--;
+                                    });
+                                  }
+                                },
+                              ),
+                              Text(
+                                '$_ticketCount',
+                                style: TextStyle(
+                                  fontFamily: 'Plus Jakarta Sans',
+                                  letterSpacing: 0,
+                                ),
+                              ),
+                              IconButton(
+                                icon: Icon(Icons.add),
+                                onPressed: () {
+                                  setState(() {
+                                    _ticketCount++;
+                                  });
+                                },
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
-                      Text(
-                        'Rp', // Sesuaikan dengan harga tiket
-                        style: TextStyle(
-                          fontFamily: 'Plus Jakarta Sans',
-                          letterSpacing: 0,
-                          fontSize: 24,
-                        ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Your Total',
+                            style: TextStyle(
+                              fontFamily: 'Plus Jakarta Sans',
+                              letterSpacing: 0,
+                            ),
+                          ),
+                          Text(
+                            'Rp ${_ticketCount * _ticketPrice}', // Hitung total harga
+                            style: TextStyle(
+                              fontFamily: 'Plus Jakarta Sans',
+                              letterSpacing: 0,
+                              fontSize: 24,
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
@@ -160,8 +206,7 @@ class _DetailEventPageState extends State<DetailEventPage> {
                     ),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Color(0xFF4B39EF),
-                      minimumSize: Size(double.infinity,
-                          44), // Sesuaikan dengan warna tema yang Anda inginkan
+                      minimumSize: Size(double.infinity, 44),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),
                       ),
