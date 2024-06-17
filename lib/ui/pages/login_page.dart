@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mavent/ui/pages/home_page.dart';
+import 'package:mavent/services/auth_service.dart';
 import 'package:mavent/ui/pages/signup_page.dart';
 import 'package:mavent/ui/widgets/custom_input_form.dart';
 
@@ -15,7 +15,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-
+  
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -114,11 +114,27 @@ class _LoginPageState extends State<LoginPage> {
                                     label: "Password",
                                     hint: "Enter your Password"),
                                 ElevatedButton(
-                                  onPressed: () {
-                                    Navigator.pushReplacement(
+                                  onPressed: () async {
+                                    final user = await _authService.signIn(
+                                      _emailController.text,
+                                      _passwordController.text,
+                                    );
+                                    if (user != null) {
+                                      Navigator.pushNamedAndRemoveUntil(
                                         context,
-                                        MaterialPageRoute(
-                                            builder: (context) => HomePage()));
+                                        '/event_homepage', // Ganti dengan nama rute untuk HomePage
+                                        (route) =>
+                                            false, // Hapus semua halaman sebelumnya dari tumpukan navigasi
+                                      );
+                                    } else {
+                                      // Tampilkan pesan kesalahan jika gagal login
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                            content: Text(
+                                                'Email atau password yang anda masukkan salah')),
+                                      );
+                                    }
                                   },
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: Color(0xFF4B39EF),
@@ -144,7 +160,7 @@ class _LoginPageState extends State<LoginPage> {
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0, 12, 0, 12),
                                   child: GestureDetector(
-                                    onTap: () => Navigator.push(
+                                    onTap: () => Navigator.pushReplacement(
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) => SignUpPage()),

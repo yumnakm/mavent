@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:mavent/services/auth_service.dart';
+import 'package:mavent/ui/pages/home_page.dart';
 import 'package:mavent/ui/pages/login_page.dart';
 import 'package:mavent/ui/widgets/custom_input_form.dart';
-
-//ya ini juga sama aja kaya login
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -17,7 +17,8 @@ class _SignUpPageState extends State<SignUpPage> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  
+  final AuthService _authService = AuthService();
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -126,7 +127,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                                 context,
                                                 MaterialPageRoute(
                                                     builder: (context) =>
-                                                        LoginPage()));
+                                                        HomePage()));
                                           },
                
                                   style: ElevatedButton.styleFrom(

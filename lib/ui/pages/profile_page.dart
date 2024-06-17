@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mavent/ui/pages/login_page.dart';
 
@@ -238,12 +239,13 @@ class _ProfilePageState extends State<ProfilePage> {
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
                 child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushReplacement(
+                  onPressed: () async {
+                    await FirebaseAuth.instance.signOut();
+                    Navigator.pushNamedAndRemoveUntil(
                       context,
-                      MaterialPageRoute(
-                        builder: (context) => LoginPage(),
-                      ),
+                      '/login', // Ganti dengan nama rute untuk HomePage
+                      (route) =>
+                          false, // Hapus semua halaman sebelumnya dari tumpukan navigasi
                     );
                   },
                   style: ElevatedButton.styleFrom(

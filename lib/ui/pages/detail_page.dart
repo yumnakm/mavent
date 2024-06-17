@@ -66,7 +66,7 @@ class _DetailEventPageState extends State<DetailEventPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    _event.location,
+                    '${_event.city}, ${_event.country}',
                     style: TextStyle(
                       fontFamily: 'Plus Jakarta Sans',
                       letterSpacing: 0,
@@ -83,7 +83,7 @@ class _DetailEventPageState extends State<DetailEventPage> {
                   ),
                   SizedBox(height: 8),
                   Text(
-                    'By ', // Tambahkan promoterName dari EventModel
+                    'By ${_event.promoter}', // Tambahkan promoterName dari EventModel
                     style: TextStyle(
                       fontFamily: 'Plus Jakarta Sans',
                       letterSpacing: 0,
@@ -174,7 +174,8 @@ class _DetailEventPageState extends State<DetailEventPage> {
                             ),
                           ),
                           Text(
-                            'Rp ${_ticketCount * _ticketPrice}', // Hitung total harga
+                            // 'Rp ${_ticketCount * _event.price}', // Hitung total harga
+                            '\$${(_ticketCount * _event.price).toStringAsFixed(2)}',
                             style: TextStyle(
                               fontFamily: 'Plus Jakarta Sans',
                               letterSpacing: 0,
