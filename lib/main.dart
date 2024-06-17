@@ -1,11 +1,17 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:mavent/firebase_options.dart';
 import 'package:mavent/ui/pages/home_page.dart';
 import 'package:mavent/ui/pages/login_page.dart';
 import 'package:mavent/ui/pages/signup_page.dart';
- 
- //ini main lah ya
 
-void main() => runApp(MyApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
@@ -16,7 +22,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         fontFamily: 'PlusJakartaSans',
       ),
-      home: LoginPage(), 
+      home: LoginPage(),
       routes: {
         '/login': (context) => LoginPage(),
         '/signup': (context) => SignUpPage(),

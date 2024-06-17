@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mavent/services/auth_service.dart';
 import 'package:mavent/ui/pages/home_page.dart';
 import 'package:mavent/ui/pages/signup_page.dart';
 import 'package:mavent/ui/widgets/custom_input_form.dart';
@@ -15,10 +16,11 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  
+  final AuthService _authService = AuthService();
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
-@override
+  @override
   Widget build(BuildContext context) {
     return GestureDetector(
       child: Scaffold(
@@ -53,7 +55,7 @@ class _LoginPageState extends State<LoginPage> {
                                   height: 100,
                                   child: Image.asset(
                                     'assets/images/logo.png',
-                                     fit: BoxFit.contain,
+                                    fit: BoxFit.contain,
                                   ),
                                 ),
                                 Container(
@@ -80,7 +82,8 @@ class _LoginPageState extends State<LoginPage> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 24),
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 12, 0, 24),
                                   child: Text(
                                     'Let\'s get started by filling out the form below.',
                                     style: TextStyle(
@@ -93,30 +96,43 @@ class _LoginPageState extends State<LoginPage> {
                                   ),
                                 ),
                                 CustomInputForm(
-                                  controller: _emailController,
-                                  label: "Email",
-                                  hint: "Enter your Email",
-                                  autofillHints: [AutofillHints.email]
-                                ),
+                                    controller: _emailController,
+                                    label: "Email",
+                                    hint: "Enter your Email",
+                                    autofillHints: [AutofillHints.email]),
                                 CustomInputForm(
-                                  obscureText: true,
-                                  controller: _passwordController,
-                                  label: "Password",
-                                  hint: "Enter your Password"
-                                ),
+                                    obscureText: true,
+                                    controller: _passwordController,
+                                    label: "Password",
+                                    hint: "Enter your Password"),
                                 ElevatedButton(
-                      onPressed: () {
-                        Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => HomePage()));
-                      },
-                  
+                                  onPressed: () async {
+                                    final user = await _authService.signIn(
+                                      _emailController.text,
+                                      _passwordController.text,
+                                    );
+                                    if (user != null) {
+                                      Navigator.pushNamedAndRemoveUntil(
+                                        context,
+                                        '/event_homepage', // Ganti dengan nama rute untuk HomePage
+                                        (route) =>
+                                            false, // Hapus semua halaman sebelumnya dari tumpukan navigasi
+                                      );
+                                    } else {
+                                      // Tampilkan pesan kesalahan jika gagal login
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                            content: Text(
+                                                'Email atau password yang anda masukkan salah')),
+                                      );
+                                    }
+                                  },
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: Color(0xFF4B39EF),
                                     minimumSize: Size(370, 44),
                                     shape: RoundedRectangleBorder(
-                                      borderRadius:BorderRadius.circular(12),
+                                      borderRadius: BorderRadius.circular(12),
                                     ),
                                     elevation: 3,
                                     padding: EdgeInsets.zero,
@@ -133,11 +149,13 @@ class _LoginPageState extends State<LoginPage> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 12),
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 12, 0, 12),
                                   child: GestureDetector(
-                                    onTap: () => Navigator.push(
+                                    onTap: () => Navigator.pushReplacement(
                                       context,
-                                      MaterialPageRoute(builder: (context) =>SignUpPage()),
+                                      MaterialPageRoute(
+                                          builder: (context) => SignUpPage()),
                                     ),
                                     child: RichText(
                                       text: TextSpan(
