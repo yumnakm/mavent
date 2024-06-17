@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mavent/ui/pages/home_page.dart';
 import 'package:mavent/ui/pages/login_page.dart';
 import 'package:mavent/ui/widgets/custom_input_form.dart';
 
@@ -25,6 +24,29 @@ class _SignUpPageState extends State<SignUpPage> {
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: Colors.white,
+        appBar: AppBar(
+              backgroundColor: Colors.white,
+              elevation: 0,
+              automaticallyImplyLeading: false,
+              title: Row(
+                children: [
+                  Image.asset(
+                    'assets/images/logo.png', // Path ke logo aplikasi
+                    height: 40, // Atur tinggi logo sesuai kebutuhan
+                  ),
+                  SizedBox(width: 10),
+                  Text(
+                    'MAVENT', // Ganti dengan nama aplikasi
+                    style: TextStyle(
+                      fontFamily: 'Plus Jakarta Sans',
+                      color: Colors.blue,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              ),
+            ),
         body: SafeArea(
           child: Row(
             mainAxisSize: MainAxisSize.max,
@@ -46,28 +68,15 @@ class _SignUpPageState extends State<SignUpPage> {
                         Align(
                           alignment: AlignmentDirectional(0, 0),
                           child: Padding(
-                            padding: EdgeInsets.all(32),
+                            padding: EdgeInsets.all(12),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Container(
-                                  height: 100,
+                                  height: 280,
                                   child: Image.asset(
-                                    'assets/images/logo.png',
+                                    'assets/images/login.png',
                                     fit: BoxFit.contain,
-                                  ),
-                                ),
-                                Container(
-                                  height: 100,
-                                  child: Text(
-                                    'Mavent',
-                                    style: TextStyle(
-                                      fontFamily: 'Plus Jakarta Sans',
-                                      color: Color.fromARGB(255, 35, 116, 191),
-                                      fontSize: 36,
-                                      letterSpacing: 0,
-                                      fontWeight: FontWeight.w600,
-                                    ),
                                   ),
                                 ),
                                 Text(
@@ -117,7 +126,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                                 context,
                                                 MaterialPageRoute(
                                                     builder: (context) =>
-                                                        HomePage()));
+                                                        LoginPage()));
                                           },
                
                                   style: ElevatedButton.styleFrom(

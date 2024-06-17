@@ -5,7 +5,6 @@ import 'package:mavent/ui/widgets/card_event.dart';
 import 'package:mavent/ui/widgets/custom_search.dart';
 import 'package:mavent/ui/widgets/navigation_bar.dart';
 import 'package:mavent/ui/pages/profile_page.dart';
-import 'package:mavent/ui/widgets/custom_button.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -58,15 +57,78 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        forceMaterialTransparency: true,
-        actions: [
-          CircleButton(
-            imageUrl:
-                'https://upload.wikimedia.org/wikipedia/commons/3/3a/Cat03.jpg', // Ganti dengan URL gambar profil Anda
-            onPressed: _navigateToProfile,
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(150.0), // Tinggi AppBar disesuaikan
+        child: AppBar(
+          backgroundColor: Colors.transparent,
+          automaticallyImplyLeading: false,
+          flexibleSpace: Stack(
+            fit: StackFit.expand,
+            children: [
+              Image.asset(
+                'assets/images/appbar.png',
+                fit: BoxFit.cover,
+              ),
+              Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      Colors.black.withOpacity(0.5),
+                      Colors.transparent,
+                    ],
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 10.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          'Hi, Mr. Alfred',
+                          style: TextStyle(
+                            fontFamily: 'Outfit',
+                            color: Colors.white,
+                            fontSize: 15,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        Text(
+                          'Good Morning',
+                          style: TextStyle(
+                            fontFamily: 'Outfit',
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ],
+                    ),
+                    IconButton(
+                      icon: SizedBox(
+                        width: 80, // Atur lebar ikon
+                        height: 80, // Atur tinggi ikon
+                        child: CircleAvatar(
+                          backgroundImage: NetworkImage(
+                            'https://upload.wikimedia.org/wikipedia/commons/3/3a/Cat03.jpg',
+                          ),
+                        ),
+                      ),
+                      onPressed: _navigateToProfile,
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
-        ],
+          elevation: 0,
+        ),
       ),
       body: Column(
         children: [

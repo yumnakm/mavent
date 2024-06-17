@@ -39,7 +39,7 @@ class CustomSearch extends StatelessWidget {
           ),
           enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(
-              color: Color(0xFFE5E7EB),
+              color: Color.fromARGB(255, 247, 244, 244),
               width: 1,
             ),
             borderRadius: BorderRadius.circular(30),
@@ -66,6 +66,7 @@ class CustomSearch extends StatelessWidget {
             borderRadius: BorderRadius.circular(30),
           ),
           filled: true,
+          fillColor: Color.fromARGB(255, 249, 248, 248),
         ),
         style: TextStyle(
           fontFamily: 'Plus Jakarta Sans',

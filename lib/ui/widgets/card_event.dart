@@ -16,93 +16,65 @@ class CardEvent extends StatelessWidget {
       ),
     );
   }
-  
+
   @override
   Widget build(BuildContext context) {
-    return InkWell( 
+    return InkWell(
       onTap: () => _navigateToDetailPage(context),
       child: Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(10, 8, 10, 0),
-      child: Container(
-        decoration: BoxDecoration(
-          color: Colors.transparent,
-          borderRadius: BorderRadius.circular(8),
-          border: Border.all(
+        padding: EdgeInsetsDirectional.fromSTEB(10, 8, 10, 0),
+        child: Container(
+          decoration: BoxDecoration(
             color: Colors.transparent,
-          ),
-        ),
-        child: Row(
-          mainAxisSize: MainAxisSize.max,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(8),
-              child: Image.network(
-                event.image,
-                width: 120,
-                height: 120,
-                fit: BoxFit.cover,
-              ),
+            borderRadius: BorderRadius.circular(8),
+            border: Border.all(
+              color: Colors.transparent,
             ),
-            Expanded(
-              child: Padding(
-                padding: EdgeInsets.all(12),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      event.title,
-                      style: TextStyle(
-                        fontFamily: 'Plus Jakarta Sans',
-                        color: Color(0xFF15161E),
-                        fontSize: 20,
-                        letterSpacing: 0,
-                        fontWeight: FontWeight.w500,
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.max,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(8),
+                child: Image.network(
+                  event.image,
+                  width: 120,
+                  height: 120,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              Expanded(
+                child: Padding(
+                  padding: EdgeInsets.all(12),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        event.title,
+                        style: TextStyle(
+                          fontFamily: 'Plus Jakarta Sans',
+                          color: Color(0xFF15161E),
+                          fontSize: 20,
+                          letterSpacing: 0,
+                          fontWeight: FontWeight.w500,
+                        ),
+                        maxLines: 2, // Maksimal 2 baris untuk judul
+                        overflow: TextOverflow.ellipsis,
                       ),
-                      maxLines: 2, // Maksimal 2 baris untuk judul
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    SizedBox(height: 4),
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Icon(
-                          Icons.access_time, // Icon waktu
-                          color: Color(0xFF606A85),
-                          size: 16,
-                        ),
-                        SizedBox(width: 4), // Spasi antara ikon dan teks
-                        Text(
-                          DateUtil.formatDate(event.date), // Teks tanggal
-                          style: TextStyle(
-                            fontFamily: 'Plus Jakarta Sans',
+                      SizedBox(height: 4),
+                      Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Icon(
+                            Icons.access_time, // Icon waktu
                             color: Color(0xFF606A85),
-                            fontSize: 12,
-                            letterSpacing: 0,
-                            fontWeight: FontWeight.w500,
+                            size: 16,
                           ),
-                        ),
-                         Text(
-                          ', ',
-                          style: TextStyle(
-                            fontFamily: 'Plus Jakarta Sans',
-                            color: Color(0xFF606A85),
-                            fontSize: 12,
-                            letterSpacing: 0,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                        SizedBox(width: 8), // Spasi lebih besar antara teks dan ikon lokasi
-                        Icon(
-                          Icons.location_on, // Icon lokasi
-                          color: Color(0xFF606A85),
-                          size: 16,
-                        ),
-                        SizedBox(width: 4), // Spasi antara ikon dan teks lokasi
-                        Expanded(
-                          child: Text(
-                            event.location, // Teks lokasi
+                          SizedBox(width: 4), // Spasi antara ikon dan teks
+                          Text(
+                            DateUtil.formatDate(event.date), // Teks tanggal
                             style: TextStyle(
                               fontFamily: 'Plus Jakarta Sans',
                               color: Color(0xFF606A85),
@@ -110,20 +82,50 @@ class CardEvent extends StatelessWidget {
                               letterSpacing: 0,
                               fontWeight: FontWeight.w500,
                             ),
-                            overflow: TextOverflow.ellipsis,
                           ),
-                        ),
-                      ],
-                    ),
-                    
-                  ],
+                          Text(
+                            ', ',
+                            style: TextStyle(
+                              fontFamily: 'Plus Jakarta Sans',
+                              color: Color(0xFF606A85),
+                              fontSize: 12,
+                              letterSpacing: 0,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                          SizedBox(
+                              width:
+                                  8), // Spasi lebih besar antara teks dan ikon lokasi
+                          Icon(
+                            Icons.location_on, // Icon lokasi
+                            color: Color(0xFF606A85),
+                            size: 16,
+                          ),
+                          SizedBox(
+                              width: 4), // Spasi antara ikon dan teks lokasi
+                          Expanded(
+                            child: Text(
+                              event.location, // Teks lokasi
+                              style: TextStyle(
+                                fontFamily: 'Plus Jakarta Sans',
+                                color: Color(0xFF606A85),
+                                fontSize: 12,
+                                letterSpacing: 0,
+                                fontWeight: FontWeight.w500,
+                              ),
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
-    ),
     );
   }
 }

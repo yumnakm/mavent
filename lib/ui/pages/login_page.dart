@@ -15,15 +15,38 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
-@override
+  @override
   Widget build(BuildContext context) {
     return GestureDetector(
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: Colors.white,
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          elevation: 0,
+          automaticallyImplyLeading: false,
+          title: Row(
+            children: [
+              Image.asset(
+                'assets/images/logo.png', // Path ke logo aplikasi
+                height: 40, // Atur tinggi logo sesuai kebutuhan
+              ),
+              SizedBox(width: 10),
+              Text(
+                'MAVENT', // Ganti dengan nama aplikasi
+                style: TextStyle(
+                  fontFamily: 'Plus Jakarta Sans',
+                  color: Colors.blue,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
+          ),
+        ),
         body: SafeArea(
           child: Row(
             mainAxisSize: MainAxisSize.max,
@@ -45,28 +68,15 @@ class _LoginPageState extends State<LoginPage> {
                         Align(
                           alignment: AlignmentDirectional(0, 0),
                           child: Padding(
-                            padding: EdgeInsets.all(32),
+                            padding: EdgeInsets.all(12),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Container(
-                                  height: 100,
+                                  height: 280,
                                   child: Image.asset(
-                                    'assets/images/logo.png',
-                                     fit: BoxFit.contain,
-                                  ),
-                                ),
-                                Container(
-                                  height: 100,
-                                  child: Text(
-                                    'Mavent',
-                                    style: TextStyle(
-                                      fontFamily: 'Plus Jakarta Sans',
-                                      color: Color.fromARGB(255, 35, 116, 191),
-                                      fontSize: 36,
-                                      letterSpacing: 0,
-                                      fontWeight: FontWeight.w600,
-                                    ),
+                                    'assets/images/login.png',
+                                    fit: BoxFit.contain,
                                   ),
                                 ),
                                 Text(
@@ -80,7 +90,8 @@ class _LoginPageState extends State<LoginPage> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 24),
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 12, 0, 24),
                                   child: Text(
                                     'Let\'s get started by filling out the form below.',
                                     style: TextStyle(
@@ -93,30 +104,27 @@ class _LoginPageState extends State<LoginPage> {
                                   ),
                                 ),
                                 CustomInputForm(
-                                  controller: _emailController,
-                                  label: "Email",
-                                  hint: "Enter your Email",
-                                  autofillHints: [AutofillHints.email]
-                                ),
+                                    controller: _emailController,
+                                    label: "Email",
+                                    hint: "Enter your Email",
+                                    autofillHints: [AutofillHints.email]),
                                 CustomInputForm(
-                                  obscureText: true,
-                                  controller: _passwordController,
-                                  label: "Password",
-                                  hint: "Enter your Password"
-                                ),
+                                    obscureText: true,
+                                    controller: _passwordController,
+                                    label: "Password",
+                                    hint: "Enter your Password"),
                                 ElevatedButton(
-                      onPressed: () {
-                        Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => HomePage()));
-                      },
-                  
+                                  onPressed: () {
+                                    Navigator.pushReplacement(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => HomePage()));
+                                  },
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: Color(0xFF4B39EF),
                                     minimumSize: Size(370, 44),
                                     shape: RoundedRectangleBorder(
-                                      borderRadius:BorderRadius.circular(12),
+                                      borderRadius: BorderRadius.circular(12),
                                     ),
                                     elevation: 3,
                                     padding: EdgeInsets.zero,
@@ -133,11 +141,13 @@ class _LoginPageState extends State<LoginPage> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 12),
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 12, 0, 12),
                                   child: GestureDetector(
                                     onTap: () => Navigator.push(
                                       context,
-                                      MaterialPageRoute(builder: (context) =>SignUpPage()),
+                                      MaterialPageRoute(
+                                          builder: (context) => SignUpPage()),
                                     ),
                                     child: RichText(
                                       text: TextSpan(

@@ -36,6 +36,7 @@ class CustomNavbar extends StatelessWidget {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(30.0),
         child: BottomNavigationBar(
+          backgroundColor: Colors.white,
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               icon: Icon(Icons.home),

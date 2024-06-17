@@ -27,7 +27,7 @@ class _DetailEventPageState extends State<DetailEventPage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-         forceMaterialTransparency: true,
+        forceMaterialTransparency: true,
         title: Text(_event.title),
         leading: IconButton(
           icon: Icon(Icons.arrow_back_rounded),
