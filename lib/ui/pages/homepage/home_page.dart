@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:mavent/models/event_model.dart';
 import 'package:mavent/services/ticketmaster_service.dart';
-import 'package:mavent/ui/pages/tambah_event.dart';
+import 'package:mavent/ui/pages/homepage/new_event/tambah_event.dart';
 import 'package:mavent/ui/widgets/card_event.dart';
 import 'package:mavent/ui/widgets/navigation_bar.dart';
-import 'package:mavent/ui/pages/profile_page.dart';
-import 'package:mavent/ui/widgets/search_event/custom_search.dart';
+import 'package:mavent/ui/pages/profile/profile_page.dart';
+import 'package:mavent/ui/widgets/custom_search.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -184,8 +184,7 @@ class _HomePageState extends State<HomePage> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) =>
-                                            TambahEvent()),
+                                        builder: (context) => TambahEvent()),
                                   );
                                 },
                                 icon: Icon(

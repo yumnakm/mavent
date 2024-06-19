@@ -186,10 +186,9 @@ class _DetailEventPageState extends State<DetailEventPage> {
                     ],
                   ),
                   SizedBox(height: 16),
-                  ElevatedButton(
+                   ElevatedButton(
                     onPressed: () {
-                      // Aksi ketika tombol Book Now ditekan
-                      print('Book Now pressed');
+                     
                     },
                     child: Padding(
                       padding:

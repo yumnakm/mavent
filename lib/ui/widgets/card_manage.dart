@@ -3,10 +3,17 @@ import 'package:mavent/models/event_model.dart';
 import 'package:mavent/resources/datautil.dart';
 import 'package:mavent/ui/pages/homepage/booking/detail_page.dart';
 
-class CardEvent extends StatelessWidget {
+class CardManage extends StatelessWidget {
   final EventModel event;
+  final VoidCallback onDeletePressed;
+  final VoidCallback onEditPressed;
 
-  const CardEvent({Key? key, required this.event}) : super(key: key);
+  const CardManage({
+    Key? key,
+    required this.event,
+    required this.onDeletePressed,
+    required this.onEditPressed,
+  }) : super(key: key);
 
   void _navigateToDetailPage(BuildContext context) {
     Navigator.push(
@@ -22,17 +29,21 @@ class CardEvent extends StatelessWidget {
     return InkWell(
       onTap: () => _navigateToDetailPage(context),
       child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(10, 8, 10, 0),
+        padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
         child: Container(
           decoration: BoxDecoration(
-            color: Colors.transparent,
+            color: Colors.white,
             borderRadius: BorderRadius.circular(8),
-            border: Border.all(
-              color: Colors.transparent,
-            ),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.3),
+                spreadRadius: 2,
+                blurRadius: 4,
+                offset: Offset(0, 2), // changes position of shadow
+              ),
+            ],
           ),
           child: Row(
-            mainAxisSize: MainAxisSize.max,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ClipRRect(
@@ -48,7 +59,6 @@ class CardEvent extends StatelessWidget {
                 child: Padding(
                   padding: EdgeInsets.all(12),
                   child: Column(
-                    mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
@@ -57,10 +67,9 @@ class CardEvent extends StatelessWidget {
                           fontFamily: 'Plus Jakarta Sans',
                           color: Color(0xFF15161E),
                           fontSize: 20,
-                          letterSpacing: 0,
                           fontWeight: FontWeight.w500,
                         ),
-                        maxLines: 2, // Maksimal 2 baris untuk judul
+                        maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                       ),
                       SizedBox(height: 4),
@@ -68,65 +77,74 @@ class CardEvent extends StatelessWidget {
                         'By ${event.promoter}',
                         style: TextStyle(
                           fontFamily: 'Plus Jakarta Sans',
-                          color: Color(0xFF15161E),
+                          color: Color(0xFF606A85),
                           fontSize: 15,
-                          letterSpacing: 0,
                           fontWeight: FontWeight.w500,
                         ),
-                        maxLines: 2, // Maksimal 2 baris untuk judul
+                        maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                       ),
                       SizedBox(height: 4),
                       Row(
-                        mainAxisSize: MainAxisSize.max,
                         children: [
                           Icon(
-                            Icons.access_time, // Icon waktu
+                            Icons.access_time,
                             color: Color(0xFF606A85),
                             size: 16,
                           ),
-                          SizedBox(width: 4), // Spasi antara ikon dan teks
+                          SizedBox(width: 4),
                           Text(
-                            DateUtil.formatDate(event.date), // Teks tanggal
+                            DateUtil.formatDate(event.date),
                             style: TextStyle(
                               fontFamily: 'Plus Jakarta Sans',
                               color: Color(0xFF606A85),
                               fontSize: 12,
-                              letterSpacing: 0,
                               fontWeight: FontWeight.w500,
                             ),
                           ),
-                          Text(
-                            ', ',
-                            style: TextStyle(
-                              fontFamily: 'Plus Jakarta Sans',
-                              color: Color(0xFF606A85),
-                              fontSize: 12,
-                              letterSpacing: 0,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                          SizedBox(
-                              width:
-                                  8), // Spasi lebih besar antara teks dan ikon lokasi
+                          SizedBox(width: 8),
                           Icon(
-                            Icons.location_on, // Icon lokasi
+                            Icons.location_on,
                             color: Color(0xFF606A85),
                             size: 16,
                           ),
-                          SizedBox(
-                              width: 4), // Spasi antara ikon dan teks lokasi
+                          SizedBox(width: 4),
                           Expanded(
                             child: Text(
-                              event.location, // Teks lokasi
+                              event.location,
                               style: TextStyle(
                                 fontFamily: 'Plus Jakarta Sans',
                                 color: Color(0xFF606A85),
                                 fontSize: 12,
-                                letterSpacing: 0,
                                 fontWeight: FontWeight.w500,
                               ),
+                              maxLines: 1,
                               overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 4),
+                      SizedBox(height: 4),
+                      Row(
+                        children: [
+                          Text(
+                            'Country: ${event.country}',
+                            style: TextStyle(
+                              fontFamily: 'Plus Jakarta Sans',
+                              color: Color(0xFF606A85),
+                              fontSize: 12,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                          SizedBox(width: 8),
+                          Text(
+                            'Price: \$${event.price.toStringAsFixed(2)}',
+                            style: TextStyle(
+                              fontFamily: 'Plus Jakarta Sans',
+                              color: Color(0xFF606A85),
+                              fontSize: 12,
+                              fontWeight: FontWeight.w500,
                             ),
                           ),
                         ],
@@ -134,6 +152,20 @@ class CardEvent extends StatelessWidget {
                     ],
                   ),
                 ),
+              ),
+              Column(
+                children: [
+                  IconButton(
+                    icon: Icon(Icons.edit_outlined),
+                    onPressed: onEditPressed,
+                    color: Colors.blue,
+                  ),
+                  IconButton(
+                    icon: Icon(Icons.delete_outline),
+                    onPressed: onDeletePressed,
+                    color: Colors.red,
+                  ),
+                ],
               ),
             ],
           ),

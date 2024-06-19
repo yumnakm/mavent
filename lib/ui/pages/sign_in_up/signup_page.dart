@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mavent/services/auth_service.dart';
-import 'package:mavent/ui/pages/login_page.dart';
+import 'package:mavent/ui/pages/sign_in_up/login_page.dart';
 import 'package:mavent/ui/widgets/custom_input_form.dart';
 
 class SignUpPage extends StatefulWidget {

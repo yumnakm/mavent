@@ -1,9 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:mavent/firebase_options.dart';
-import 'package:mavent/ui/pages/home_page.dart';
-import 'package:mavent/ui/pages/login_page.dart';
-import 'package:mavent/ui/pages/signup_page.dart';
+import 'package:mavent/ui/pages/homepage/home_page.dart';
+import 'package:mavent/ui/pages/sign_in_up/login_page.dart';
+import 'package:mavent/ui/pages/sign_in_up/signup_page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

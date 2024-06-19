@@ -1,7 +1,7 @@
 // ticket_page.dart
 import 'package:flutter/material.dart';
 import 'package:mavent/models/ticket_model.dart'; // Sesuaikan path ini
-import 'package:mavent/ui/widgets/ticket/card_ticket.dart'; // Sesuaikan path ini
+import 'package:mavent/ui/widgets/card_ticket.dart'; // Sesuaikan path ini
 import 'package:mavent/ui/widgets/navigation_bar.dart';
 
 class TicketPage extends StatefulWidget {

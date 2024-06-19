@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mavent/ui/pages/home_page.dart';
-import 'package:mavent/ui/pages/ticket_page.dart';
+import 'package:mavent/ui/pages/homepage/home_page.dart';
+import 'package:mavent/ui/pages/ticket/ticket_page.dart';
 
 class CustomNavbar extends StatelessWidget {
   final int currentIndex;

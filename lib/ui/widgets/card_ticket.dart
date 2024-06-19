@@ -1,7 +1,7 @@
 // card_ticket.dart
 import 'package:flutter/material.dart';
 import 'package:mavent/models/ticket_model.dart'; // Sesuaikan path ini
-import 'package:mavent/ui/pages/detail_ticket.dart'; // Sesuaikan path ini
+import 'package:mavent/ui/pages/ticket/detail_ticket.dart'; // Sesuaikan path ini
 
 class CardTicket extends StatelessWidget {
   final TicketModel ticket;

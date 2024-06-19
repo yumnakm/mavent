@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mavent/services/auth_service.dart';
-import 'package:mavent/ui/pages/signup_page.dart';
+import 'package:mavent/ui/pages/sign_in_up/signup_page.dart';
 import 'package:mavent/ui/widgets/custom_input_form.dart';
 
 //ya ini login page lah ya buat desain form2nya ada di bagian folder widget custom input

@@ -16,9 +16,7 @@ class _TambahEventState extends State<TambahEvent> {
   final TextEditingController _tempatController = TextEditingController();
   final TextEditingController _lokasiController = TextEditingController();
   final TextEditingController _hargaController = TextEditingController();
-
-  // Variabel untuk menyimpan path gambar yang dipilih
-  String? _imagePath;
+  final TextEditingController _imageUrlController = TextEditingController(); // Controller untuk URL gambar
 
   @override
   Widget build(BuildContext context) {
@@ -35,31 +33,24 @@ class _TambahEventState extends State<TambahEvent> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              ElevatedButton.icon(
-                onPressed: () async {
-                  // Implementasi pemilihan gambar dari galeri
-                },
-                icon: Icon(Icons.image),
-                label: Text('Pilih Gambar'),
-                style: ElevatedButton.styleFrom(
-                  minimumSize: Size(200, 50), // Atur ukuran minimum tombol
-                ),
+              // Input form untuk URL gambar
+              CustomInputForm(
+                controller: _imageUrlController,
+                label: 'URL Gambar',
+                hint: 'Masukkan URL gambar event',
               ),
+              SizedBox(height: 16.0),
 
-              // Menampilkan gambar yang dipilih (jika ada)
-              _imagePath != null
-                  ? Container(
+              // Preview gambar (jika URL gambar dimasukkan)
+              _imageUrlController.text.isNotEmpty
+                  ? Image.network(
+                      _imageUrlController.text,
                       width: 100,
                       height: 100,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8.0),
-                        // image: DecorationImage(
-                        //   image: FileImage(File(_imagePath!)),
-                        //   fit: BoxFit.cover,
-                        // ),
-                      ),
+                      fit: BoxFit.cover,
                     )
                   : SizedBox.shrink(),
+
               SizedBox(height: 16.0),
               // Input form untuk judul, deskripsi, tanggal, waktu, tempat, lokasi, harga
               CustomInputForm(
@@ -113,7 +104,11 @@ class _TambahEventState extends State<TambahEvent> {
                   // Tambahkan logika untuk menyimpan data event
                   // Misalnya:
 
-                  // Di sini bisa disimpan ke database atau diproses lebih lanjut
+                  // Mengambil nilai dari controller URL gambar
+                  String imageUrl = _imageUrlController.text;
+
+                  // Disimpan ke database atau diproses lebih lanjut
+                  // Misalnya simpan ke Firebase atau penyimpanan lainnya
                   // Setelah selesai, bisa kembali ke halaman sebelumnya atau lainnya
                   Navigator.pop(context); // Kembali ke halaman sebelumnya
                 },
