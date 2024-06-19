@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mavent/models/event_model.dart';
-import 'package:mavent/app/resources/datautil.dart';
+import 'package:mavent/resources/datautil.dart';
 import 'package:mavent/ui/pages/detail_page.dart';
 
 class CardEvent extends StatelessWidget {
@@ -57,6 +57,19 @@ class CardEvent extends StatelessWidget {
                           fontFamily: 'Plus Jakarta Sans',
                           color: Color(0xFF15161E),
                           fontSize: 20,
+                          letterSpacing: 0,
+                          fontWeight: FontWeight.w500,
+                        ),
+                        maxLines: 2, // Maksimal 2 baris untuk judul
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      SizedBox(height: 4),
+                      Text(
+                        'By ${event.promoter}',
+                        style: TextStyle(
+                          fontFamily: 'Plus Jakarta Sans',
+                          color: Color(0xFF15161E),
+                          fontSize: 15,
                           letterSpacing: 0,
                           fontWeight: FontWeight.w500,
                         ),

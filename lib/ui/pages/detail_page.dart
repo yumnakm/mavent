@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mavent/models/event_model.dart';
-import 'package:mavent/app/resources/datautil.dart';
+import 'package:mavent/resources/datautil.dart';
 
 class DetailEventPage extends StatefulWidget {
   final EventModel event;
@@ -13,8 +13,7 @@ class DetailEventPage extends StatefulWidget {
 
 class _DetailEventPageState extends State<DetailEventPage> {
   late EventModel _event;
-  int _ticketCount = 0; // State untuk menyimpan jumlah tiket yang akan dibeli
-  int _ticketPrice = 100000; // Harga per tiket, contoh: Rp100.000
+  int _ticketCount = 0; // State untuk menyimpan jumlah tiket yang akan dibeli // Harga per tiket, contoh: Rp100.000
 
   @override
   void initState() {

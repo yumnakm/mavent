@@ -6,4 +6,6 @@ class NamedRoutes {
   static const detailScreen = '/detail-screen';
   static const ticketScreen = '/ticket-screen';
   static const signupScreen = '/signup-screen';
+  static const tambahEvent = '/tambah-event';
+
 }
